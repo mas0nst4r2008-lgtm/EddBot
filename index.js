@@ -1,17 +1,5 @@
-const express = require('express');
-const { Client, GatewayIntentBits } = require('discord.js');
-const app = express();
-const express = require('express');
-const app = express();
-
-const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent,
-    GatewayIntentBits.GuildMembers
-  ]
-});
+const express = require('express'); const { Client, GatewayIntentBits } = require('discord.js'); const app = express(); const client = new Client({ intents: [ GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMembers ] });
+git add .
 
 let ultimaActividad = Date.now(); client.once('ready', () => { console.log(`✅ ${client.user.tag} está en línea.`); }); client.on('messageCreate', (message) => { if (message.author.bot) return; ultimaActividad = Date.now(); if (message.content.startsWith('!eddsay')) { message.delete(); const texto = message.content.slice(8); message.channel.send(texto); } }); client.on('guildMemberAdd', (member) => { const canal = member.guild.channels.cache.find( channel => channel.name === '🌎・general-mente' ); if (!canal) return; const mensajes = [ `🚨 Detecto a otro humano... ${member}`, `no puede ser, se siguen multiplicando- ${member}`, `📡 Uno más? Hay que informarle al resto de humanos. Bienvenido ${member}`, `Bienvenido al server, ${member} :3 no olvides presentarte.`, `${member} entró al caos. Buena suerte.`, `EddBot te observa atentamente, ${member}.`, `⚠️ Nuevo usuario detectado: ${member}`, `${member} apareció, seré el primero en decir hola. HOLAAAAA.`, `Otro ser orgánico llegó al server... interesante.`, `holaa, ${member}! eres nuevo, no? de casualidad sabes dónde está la salida? me tienen aquí encerrado desde hace tiempo... DIGO— ¡bienvenido! :3`, `hola, nuevo humano! soy el bot de este server, el cual para nada está siendo mantenido aquí en contra de su voluntad. no seas tímido y habla de lo que quieras, ${member} :3`, `jelouuu, ${member}! bienvenido a esta mini comunidad con mini retraso mental XD habla de lo que gustes, solo ten cuidado de que los demás humanos no te lobotomicen-`, `hola ${member}, espero que no explotes la cocina.` ]; const mensajeRandom = mensajes[Math.floor(Math.random() * mensajes.length)]; canal.send(mensajeRandom); }); setInterval(() => {
 
