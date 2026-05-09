@@ -1,4 +1,8 @@
-const { Client, GatewayIntentBits } = require('discord.js')('express'); const app = express();;
+const express = require('express');
+const { Client, GatewayIntentBits } = require('discord.js');
+const app = express();
+const express = require('express');
+const app = express();
 
 const client = new Client({
   intents: [
@@ -83,4 +87,4 @@ app.listen(process.env.PORT || 3000, () => {
 });
 
 }, 60000); client.login(process.env.TOKEN);
-// MENSAJES DE BIENVENIDA
+
