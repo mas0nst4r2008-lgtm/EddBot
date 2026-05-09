@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits } = require('discord.js');
+const { Client, GatewayIntentBits } = require('discord.js')('express'); const app = express();;
 
 const client = new Client({
   intents: [
@@ -74,6 +74,13 @@ let ultimaActividad = Date.now(); client.once('ready', () => { console.log(`✅ 
         ultimaActividad = Date.now();
 
     }
+app.get('/', (req, res) => {
+    res.send('EddBot está vivo 🔥');
+});
+
+app.listen(process.env.PORT || 3000, () => {
+    console.log('Servidor web listo.');
+});
 
 }, 60000); client.login(process.env.TOKEN);
 // MENSAJES DE BIENVENIDA
